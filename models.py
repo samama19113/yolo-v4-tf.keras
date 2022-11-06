@@ -13,7 +13,7 @@ from utils import load_weights, get_detection_data, draw_bbox, voc_ap, draw_plot
 from config import yolo_config
 from loss import yolo_loss
 
-from tensorflow.keras import layers, models, optimizers
+
 class Yolov4(object):
     def __init__(self,
                  weight_path=None,
@@ -21,9 +21,9 @@ class Yolov4(object):
                  config=yolo_config,
                  ):
         assert config['img_size'][0] == config['img_size'][1], 'not support yet'
-        assert config['img_size'][0] % config['strides'][-1] == 0, 'must be a multiple of last stride'from tensorflow.keras import layers, models, optimizers
+        assert config['img_size'][0] % config['strides'][-1] == 0, 'must be a multiple of last stride'
         self.class_names = [line.strip() for line in open(class_name_path).readlines()]
-        self.img_size = yolo_config['img_size']from tensorflow.keras import layers, models, optimizers
+        self.img_size = yolo_config['img_size']
         self.num_classes = len(self.class_names)
         self.weight_path = weight_path
         self.anchors = np.array(yolo_config['anchors']).reshape((3, 3, 2))
